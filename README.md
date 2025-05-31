@@ -80,6 +80,7 @@ mini-library-project
   - `DELETE /books/{book_id}`: Delete a book.
   - `GET /books/search/?q=...`: Search books by title or author.
 - **File uploads**: When adding a book, you can upload a file (e.g., PDF), which is saved in the `files/` directory.
+- **No reading status**: The backend and API do not include any reading status field.
 
 ---
 
@@ -115,10 +116,11 @@ mini-library-project
 
 - **SAPUI5** UI built in TypeScript, compiled to JavaScript.
 - **index.html** loads SAPUI5 from CDN and bootstraps the app.
-- **Library.view.ts** creates a SAPUI5 table showing books with columns for Title, Author, Created On, Created By, and Edit button.
+- **Library.view.ts** creates a SAPUI5 table showing books with columns for Title, Author, Created On, Created By, and Edit/Delete buttons.
 - **Library.controller.ts** fetches book data from the backend.
 - **TypeScript types** for SAPUI5 and jQuery are included for type safety.
-- **Development server** (`http-server`) serves the frontend for local development.
+- **Development server** (`http-server` or `npm start`) serves the frontend for local development.
+- **No status column**: The UI does not display or manage any reading status.
 
 ---
 
