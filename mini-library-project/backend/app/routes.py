@@ -1,22 +1,24 @@
 from fastapi import APIRouter, HTTPException, UploadFile, File, Form
 from typing import List, Optional
 from .models import Book
-from datetime import datetime
+from datetime import datetime, timedelta
 
 router = APIRouter()
 
-# Dummy data
+now = datetime.now()
+
+# Dummy data with status and dynamic created_at dates
 books = [
-    Book(id=1, title="1984", author="George Orwell", year=1949, created_at=datetime(2023, 1, 10, 14, 30), file_url=None),
-    Book(id=2, title="Brave New World", author="Aldous Huxley", year=1932, created_at=datetime(2023, 2, 5, 9, 15), file_url=None),
-    Book(id=3, title="To Kill a Mockingbird", author="Harper Lee", year=1960, created_at=datetime(2023, 3, 12, 16, 45), file_url="files/3_mockingbird.pdf"),
-    Book(id=4, title="The Great Gatsby", author="F. Scott Fitzgerald", year=1925, created_at=datetime(2023, 4, 20, 11, 0), file_url=None),
-    Book(id=5, title="Pride and Prejudice", author="Jane Austen", year=1813, created_at=datetime(2023, 5, 8, 13, 20), file_url="files/5_pride.pdf"),
-    Book(id=6, title="The Catcher in the Rye", author="J.D. Salinger", year=1951, created_at=datetime(2023, 6, 18, 10, 5), file_url=None),
-    Book(id=7, title="The Hobbit", author="J.R.R. Tolkien", year=1937, created_at=datetime(2023, 7, 22, 17, 40), file_url="files/7_hobbit.pdf"),
-    Book(id=8, title="Fahrenheit 451", author="Ray Bradbury", year=1953, created_at=datetime(2023, 8, 30, 8, 55), file_url=None),
-    Book(id=9, title="Moby-Dick", author="Herman Melville", year=1851, created_at=datetime(2023, 9, 14, 15, 10), file_url=None),
-    Book(id=10, title="War and Peace", author="Leo Tolstoy", year=1869, created_at=datetime(2023, 10, 3, 12, 25), file_url="files/10_warpeace.pdf"),
+    Book(id=1, title="1984", author="George Orwell", year=1949, created_at=now - timedelta(days=120), file_url=None),
+    Book(id=2, title="Brave New World", author="Aldous Huxley", year=1932, created_at=now - timedelta(days=110), file_url=None),
+    Book(id=3, title="To Kill a Mockingbird", author="Harper Lee", year=1960, created_at=now - timedelta(days=100), file_url="files/3_mockingbird.pdf"),
+    Book(id=4, title="The Great Gatsby", author="F. Scott Fitzgerald", year=1925, created_at=now - timedelta(days=90), file_url=None),
+    Book(id=5, title="Pride and Prejudice", author="Jane Austen", year=1813, created_at=now - timedelta(days=80), file_url="files/5_pride.pdf"),
+    Book(id=6, title="The Catcher in the Rye", author="J.D. Salinger", year=1951, created_at=now - timedelta(days=70), file_url=None),
+    Book(id=7, title="The Hobbit", author="J.R.R. Tolkien", year=1937, created_at=now - timedelta(days=60), file_url="files/7_hobbit.pdf"),
+    Book(id=8, title="Fahrenheit 451", author="Ray Bradbury", year=1953, created_at=now - timedelta(days=50), file_url=None),
+    Book(id=9, title="Moby-Dick", author="Herman Melville", year=1851, created_at=now - timedelta(days=40), file_url=None),
+    Book(id=10, title="War and Peace", author="Leo Tolstoy", year=1869, created_at=now - timedelta(days=30), file_url="files/10_warpeace.pdf"),
 ]
 
 @router.post("/books/", response_model=Book)
