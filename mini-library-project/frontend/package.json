@@ -1,0 +1,15 @@
+{
+  "name": "mini-library-frontend",
+  "version": "1.0.0",
+  "description": "SAPUI5 frontend for mini library",
+  "scripts": {
+    "build": "tsc",
+    "start": "http-server ./dist"
+  },
+  "devDependencies": {
+    "@openui5/ts-types": "^1.136.0",
+    "@types/jquery": "^3.5.32",
+    "http-server": "^14.1.1",
+    "typescript": "^5.0.0"
+  }
+}

@@ -1,0 +1,9 @@
+FastAPI
+Uvicorn
+Pydantic
+SQLAlchemy
+python-multipart
+aiofiles
+
+# Frontend TypeScript types (install with npm, not pip):
+# npm install --save-dev @openui5/ts-types
