@@ -4,11 +4,14 @@
   "description": "SAPUI5 frontend for mini library",
   "scripts": {
     "build": "tsc",
-    "start": "http-server ./dist"
+    "start": "http-server ./dist",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "devDependencies": {
     "@openui5/ts-types": "^1.136.0",
     "@types/jquery": "^3.5.32",
+    "gh-pages": "^6.3.0",
     "http-server": "^14.1.1",
     "typescript": "^5.0.0"
   }
