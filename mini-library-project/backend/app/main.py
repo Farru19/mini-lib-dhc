@@ -1,7 +1,11 @@
-from fastapi import FastAPI
-from .routes import router
-from fastapi.middleware.cors import CORSMiddleware
+import sys
+import os
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 from routes import router
+
+from fastapi import FastAPI
+#from .routes import router
+from fastapi.middleware.cors import CORSMiddleware
 app = FastAPI()
 
 app.add_middleware(
