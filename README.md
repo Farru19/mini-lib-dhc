@@ -107,7 +107,7 @@ mini-library-project
 4. **Serve the application:**
 
    ```bash
-   npm start
+   npx http-server -p 8080
    ```
 
    - This will serve `index.html` and compiled files at [http://localhost:8080](http://localhost:8080).
@@ -119,7 +119,7 @@ mini-library-project
 - **Library.view.ts** creates a SAPUI5 table showing books with columns for Title, Author, Created On, Created By, and Edit/Delete buttons.
 - **Library.controller.ts** fetches book data from the backend.
 - **TypeScript types** for SAPUI5 and jQuery are included for type safety.
-- **Development server** (`http-server` or `npm start`) serves the frontend for local development.
+- **Development server** (`npx http-server -p 8080`) serves the frontend for local development.
 - **No status column**: The UI does not display or manage any reading status.
 
 ---
