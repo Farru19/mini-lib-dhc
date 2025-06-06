@@ -17,7 +17,7 @@ var mini;
             class LibraryController {
                 fetchBooks() {
                     return __awaiter(this, void 0, void 0, function* () {
-                        const response = yield fetch("http://localhost:8000/books");
+                        const response = yield fetch("https://mini-lib-dhc.onrender.com/books");
                         return response.json();
                     });
                 }
