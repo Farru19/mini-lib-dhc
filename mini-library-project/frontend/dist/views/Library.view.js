@@ -147,26 +147,33 @@ var mini;
                         beginButton: new sap.m.Button({
                             text: "Add",
                             type: sap.m.ButtonType.Emphasized,
-                            press: () => {
+                            press: async () => {
                                 const title = titleInput.getValue().trim();
                                 const author = authorInput.getValue().trim();
                                 if (!title || !author) {
                                     sap.m.MessageToast.show("Please enter both title and author.");
                                     return;
                                 }
-                                // Add the new book to the list
-                                const newBook = {
-                                    id: this.allBooks.length ? Math.max(...this.allBooks.map(b => b.id)) + 1 : 1,
-                                    title,
-                                    author,
-                                    year: new Date().getFullYear(),
-                                    created_at: new Date().toISOString(),
-                                    file_url: null,
-                                    status: "Want to Read" // Default status
-                                };
-                                this.allBooks.push(newBook);
-                                this.renderBooks(this.allBooks);
-                                dialog.close();
+                                // Send POST request to backend
+                                try {
+                                    const response = await fetch("http://localhost:8000/books/", {
+                                        method: "POST",
+                                        body: new URLSearchParams({
+                                            title,
+                                            author,
+                                            year: new Date().getFullYear().toString()
+                                        })
+                                    });
+                                    if (!response.ok) {
+                                        throw new Error("Failed to add book");
+                                    }
+                                    const newBook = await response.json();
+                                    this.allBooks.push(newBook);
+                                    this.renderBooks(this.allBooks);
+                                    dialog.close();
+                                } catch (error) {
+                                    sap.m.MessageToast.show("Error adding book: " + error.message);
+                                }
                             }
                         }),
                         endButton: new sap.m.Button({

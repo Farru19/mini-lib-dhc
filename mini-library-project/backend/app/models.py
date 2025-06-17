@@ -8,7 +8,6 @@ class Book(BaseModel):
     author: str
     year: int
     created_at: datetime
-    file_url: Optional[str] = None
 
 class Library(BaseModel):
     id: int
